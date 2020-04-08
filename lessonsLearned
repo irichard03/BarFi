@@ -1,0 +1,1 @@
+#1 Don't try to add an existing project/repository to your remote repository if it has anything in it.  Perform a pull request first.

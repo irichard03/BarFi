@@ -1,12 +1,42 @@
-﻿@{
+﻿@model IEnumerable<Barfi.Models.Bar>
+
+@{
     ViewBag.Title = "BarFi";
 }
 
 <div class="jumbotron">
     <h1>BarFi.info</h1>
-    <p class="lead">Coming Soon!</p>
-    <p>Lookup local bars with WiFi in your area so you can achieve Balmer Peak performance! Rule your scrum while drinking rum!</p>
+    <p class="lead">Coming Soon</p>
+    <p>Lookup local bars with WiFi in your area so you can achieve Balmer Peak performance.</p>
 </div>
+
+<div class="row">
+    <div class="col-md-4">
+        There are @Model.Count() Bars in the dataset.
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">WiFi</th>
+            <th scope="col">Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bar in Model)
+        {
+        <tr>
+            <td>@bar.ID</td>
+            <td>@bar.name</td>
+            <td>@bar.WIFI</td>
+            <td>@bar.starRating</td>
+        </tr>
+        }
+    </tbody>
+</table>
 
 <div class="row">
     <div class="col-md-4">
@@ -18,9 +48,5 @@
     <div class="col-md-4">
         <h2>Crowdsource Intel!</h2>
         <p>Help improve BarFi, do your part and add bars with good WiFi.</p>
-    </div>
-    <div class="col-md-4">
-        <h2>Shame pretenders</h2>
-        <p>No bars in your bar? That's <em>no me gusta</em>, incentivize bundling good WiFi with high-priced drinks!</p>
     </div>
 </div>

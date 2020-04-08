@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Barfi.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,16 @@ namespace Barfi.Controllers
 {
     public class HomeController : Controller
     {
+        IBarData db;
+
+        public HomeController()
+        {
+            db = new InMemoryBarData();
+        }
         public ActionResult Index()
         {
-            return View();
+            var model = db.getAll();
+            return View(model);
         }
 
         public ActionResult About()
@@ -23,6 +31,13 @@ namespace Barfi.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Barfi contact page.";
+
+            return View();
+        }
+
+        public ActionResult Meeseeks()
+        {
+            ViewBag.Message = "Hi I'm Mr. Meeseeks!";
 
             return View();
         }
