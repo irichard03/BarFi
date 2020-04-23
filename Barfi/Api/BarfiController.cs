@@ -9,5 +9,10 @@ namespace Barfi.Api
 {
     public class BarfiController : ApiController
     {
+        //Get
+        public string Get()
+        {
+            return "Hi";
+        }
     }
 }

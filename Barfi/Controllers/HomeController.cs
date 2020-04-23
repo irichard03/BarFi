@@ -10,10 +10,10 @@ namespace Barfi.Controllers
     public class HomeController : Controller
     {
         IBarData db;
-
-        public HomeController()
+        //Add IOC container.
+        public HomeController(IBarData db)
         {
-            db = new InMemoryBarData();
+            this.db = db;
         }
         public ActionResult Index()
         {
