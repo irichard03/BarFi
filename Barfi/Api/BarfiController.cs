@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Barfi.Models;
+using Barfi.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,10 +11,18 @@ namespace Barfi.Api
 {
     public class BarfiController : ApiController
     {
-        //Get
-        public string Get()
+
+        private readonly IBarData db;
+        public BarfiController(IBarData db)
         {
-            return "Hi";
+            this.db = db;
+        }
+
+        //Get
+        public IEnumerable<Bar> Get()
+        {
+            var model = db.getAll();
+            return model;
         }
     }
 }

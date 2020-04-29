@@ -20,7 +20,7 @@ namespace Barfi
                               "text/html", StringComparison.InvariantCultureIgnoreCase,true,"application/json")); 
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            ContainerConfig.RegisterContainer();
+            ContainerConfig.RegisterContainer(GlobalConfiguration.Configuration);
         }
     }
 }

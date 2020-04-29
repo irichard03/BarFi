@@ -9,5 +9,9 @@ namespace Barfi.Services
     public interface IBarData
     {
         IEnumerable<Bar> getAll();
+
+        Bar Get(int id);
+
+        void Add(Bar bar);
     }
 }

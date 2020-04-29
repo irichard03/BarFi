@@ -8,6 +8,7 @@ namespace Barfi.Services
     public class InMemoryBarData : IBarData
     {
         List<Bar> bars;
+        
 
         public InMemoryBarData()
         {
@@ -19,11 +20,8 @@ namespace Barfi.Services
                     name = "McSorley's",
                     WIFI = true,
                     starRating = 5,
-                    location = new Dictionary<double,double>()
-                    {
-                        { 40.7287,-73.9897 }
-                    }
-
+                    latitude = 40.7287,
+                    longitude = -73.9897
                 },
                 new Bar
                 {
@@ -31,11 +29,8 @@ namespace Barfi.Services
                     name = "The Esquire Tavern",
                     WIFI = true,
                     starRating = 2,
-                    location = new Dictionary<double,double>()
-                    {
-                        { 29.4247,-98.4918 }
-                    }
-
+                    latitude = 29.4247,
+                    longitude = -98.4918
                 },
                 new Bar
                 {
@@ -43,15 +38,24 @@ namespace Barfi.Services
                     name = "Jake's Sports Bar",
                     WIFI = false,
                     starRating = 0,
-                    location = new Dictionary<double,double>()
-                    {
-                        { 29.7346,-95.4769 }
-                    }
-
+                    latitude = 29.7346,
+                    longitude = -95.4769
                 },
 
             };
         }
+
+        public Bar Get(int id)
+        {
+            return bars.FirstOrDefault(b =>b.ID == id);
+        }
+
+        public void Add(Bar bar)
+        {
+            bars.Add(bar);
+            bar.ID = bars.Max(b => b.ID) + 1;  //hack to increment ID
+        }
+
         public IEnumerable<Bar> getAll()
         {
             return bars.OrderBy(b => b.ID);
