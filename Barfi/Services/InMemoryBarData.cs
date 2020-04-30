@@ -56,6 +56,19 @@ namespace Barfi.Services
             bar.ID = bars.Max(b => b.ID) + 1;  //hack to increment ID
         }
 
+        public void Update(Bar bar)
+        {
+            var oldRecord = Get(bar.ID);
+            if(oldRecord != null)
+            {
+                oldRecord.name = bar.name;
+                oldRecord.WIFI = bar.WIFI;
+                oldRecord.starRating = bar.starRating;
+                oldRecord.latitude = bar.latitude;
+                oldRecord.longitude = bar.longitude;
+            }
+        }
+
         public IEnumerable<Bar> getAll()
         {
             return bars.OrderBy(b => b.ID);

@@ -36,6 +36,30 @@ namespace Barfi.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var model = db.Get(id);
+            if(model == null)
+            {
+                return View("NotFound");
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Bar bar)
+        {
+            if(ModelState.IsValid)
+            {
+                db.Update(bar);
+                return RedirectToAction("Details", new { id = bar.ID });
+            }
+            return View(bar);
+            
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Bar bar)

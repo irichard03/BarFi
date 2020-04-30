@@ -13,5 +13,6 @@ namespace Barfi.Services
         Bar Get(int id);
 
         void Add(Bar bar);
+        void Update(Bar bar);
     }
 }

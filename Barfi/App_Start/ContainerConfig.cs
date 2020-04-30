@@ -23,9 +23,11 @@ namespace Barfi
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
-            builder.RegisterType<InMemoryBarData>()
+            builder.RegisterType<SqlBarData>()
                    .As<IBarData>()
-                   .SingleInstance();
+                   .InstancePerRequest();
+            builder.RegisterType<BarfiDbContext>().InstancePerRequest();
+
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             httpConfiguration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
