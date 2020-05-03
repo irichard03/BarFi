@@ -216,6 +216,7 @@
     <Content Include="Views\Barfi\NotFound.cshtml" />
     <Content Include="Views\Barfi\Create.cshtml" />
     <Content Include="Views\Barfi\Edit.cshtml" />
+    <Content Include="Views\Barfi\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

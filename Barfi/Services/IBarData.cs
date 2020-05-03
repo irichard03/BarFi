@@ -14,5 +14,7 @@ namespace Barfi.Services
 
         void Add(Bar bar);
         void Update(Bar bar);
+
+        void Delete(int id);
     }
 }

@@ -21,6 +21,13 @@ namespace Barfi.Services
             db.SaveChanges();
         }
 
+        public void Delete(int id)
+        {
+            var bar = db.Bars.Find(id);
+            db.Bars.Remove(bar);
+            db.SaveChanges();
+        }
+
         public Bar Get(int id)
         {
             return db.Bars.FirstOrDefault(b => b.ID == id);

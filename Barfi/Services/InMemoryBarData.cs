@@ -79,5 +79,13 @@ namespace Barfi.Services
             return bars.Where(b => b.WIFI == true);
         }
 
+        public void Delete(int id)
+        {
+            var bar = Get(id);
+            if (bar != null)
+            {
+                bars.Remove(bar);
+            }
+        }
     }
 }

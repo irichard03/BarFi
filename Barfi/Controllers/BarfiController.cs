@@ -48,6 +48,17 @@ namespace Barfi.Controllers
             return View(model);
         }
 
+        [HttpGet]
+         public ActionResult Delete(int id)
+        {
+            var model = db.Get(id);
+            if (model == null)
+            {
+                return View("NotFound");
+            }
+            return View(model); ;
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Bar bar)
@@ -70,6 +81,14 @@ namespace Barfi.Controllers
                 return RedirectToAction("Details", new { id = bar.ID });
             }
             return View();
-            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, FormCollection form)
+        {
+            db.Delete(id);
+            return RedirectToAction("Index");
+        }
     }
 }
